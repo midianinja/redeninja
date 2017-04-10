@@ -44,4 +44,19 @@ function custom_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
 	return $avatar;
 }
 add_filter( 'get_avatar' , 'custom_avatar' , 1 , 5 );
+
+function nj_add_fullwidth_body_class( $classes ){
+	$blacklist = array( 'et_right_sidebar');
+
+	$classes[] = 'et_full_width_page';
+	$classes[] = 'et_pb_pagebuilder_layout';
+	$classes[] = 'et_fullwidth_nav';
+	$classes = array_diff($classes,$blacklist);
+
+
+
+
+	return $classes;
+}
+add_filter( 'body_class', 'nj_add_fullwidth_body_class' , 11);
 ?>
