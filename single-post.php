@@ -90,10 +90,10 @@ p.post-meta span {
 
 								<div class="et_pb_module et_pb_space et_pb_divider_1"></div><div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_2">
 
-								<p><a href="<?php echo get_post_permalink($colunista->ID); ?>">por <?php the_author_meta('display_name',$author_ID); ?></a></p>
+								<p><a href="<?php echo get_author_posts_url($author_ID); ?>">por <?php the_author_meta('display_name',$author_ID); ?></a></p>
 
 							</div> <!-- .et_pb_text --><div class="et_pb_module et_pb_space et_pb_divider et_pb_divider_2"></div><div class="et_pb_module et-waypoint et_pb_image et_pb_animation_off et_pb_image_1 et_always_center_on_mobile et-animated">
-							<a href="<?php echo get_post_permalink($colunista->ID); ?>"><img src="<?php the_author_meta('avatar',$author_ID); ?>" alt="<?php the_author_meta('display_name',$author_ID); ?>">
+							<a href="<?php echo get_author_posts_url($author_ID); ?>"><img src="<?php the_author_meta('avatar',$author_ID); ?>" alt="<?php the_author_meta('display_name',$author_ID); ?>">
 							</a>
 						</div><div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_3">
 
