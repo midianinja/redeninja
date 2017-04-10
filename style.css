@@ -10,4 +10,19 @@
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Tags: responsive-layout, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, custom-background, custom-colors, featured-images, full-width-template, post-formats, rtl-language-support, theme-options, threaded-comments, translation-ready
  Text Domain:  divi-child-theme
-*/
+ */
+
+ @font-face {font-family: 'Times Condensed'; src: url('fonts/TimesNRCondensedBold.eot'); src: url('fonts/TimesNRCondensedBold.eot?#iefix') format('embedded-opentype'), url('fonts/TimesNRCondensedBold.woff') format('woff'), url('fonts/TimesNRCondensedBold.ttf') format('truetype'); font-weight: bold; font-style: normal;}
+
+ .et_post_meta_wrapper h1 {
+ 	font-family: 'Times Condensed', Arial;
+ 	font-size: 57px !important;
+ 	letter-spacing: -0.02em;
+
+ }
+
+ @media only screen and ( min-width: 981px ) {
+ 	.et_post_meta_wrapper h1 {
+ 		width: 73.625%;
+ 	}
+ }
