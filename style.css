@@ -4,7 +4,7 @@
  Description:  Tema pra o portal de colunistas do NINJA
  Author:       José Carlos Marquetti Junior
  Author URI:   https://github.com/iwasthesword
- Template:     Divi
+ Template:     Divi-3
  Version:      0.0.1
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
@@ -18,7 +18,6 @@
  	font-family: 'Times Condensed', Arial;
  	font-size: 57px !important;
  	letter-spacing: -0.02em;
-
  }
 
  @media only screen and ( min-width: 981px ) {
