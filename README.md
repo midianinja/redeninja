@@ -14,6 +14,13 @@ As configurações do JSON estão localizadas na pasta [**/json-settings/**](jso
 ### Configuração do customizer:
 - Aparência >> Personalizar
 - Importar e Exportar
+
+![img](https://cloud.githubusercontent.com/assets/8400448/24923637/86370284-1ec8-11e7-9697-53cd0c6c2bd2.png)
+
 - Importar
+
+![img](https://cloud.githubusercontent.com/assets/8400448/24924093/0027d194-1eca-11e7-9013-efb4e7298609.png)
+
 - Escolher Arquivo: [**NINJA-customizer-settings.json**](json-settings/NINJA-customizer-settings.json)
 - Importar Configurações do Personalizador Divi
+
