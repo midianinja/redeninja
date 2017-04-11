@@ -66,7 +66,7 @@ p.post-meta span {
 			<div id="left-area">
 				<?php while ( have_posts() ) : the_post(); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
-					<?php $author_ID = get_query_var( 'author' ); ?>
+					<?php $author_ID = $post->post_author; ?>
 
 					<div class="et_post_meta_wrapper">
 						<p class="post-meta"><span class="published"><?php the_date('d/m/Y'); ?><span class="dashicons dashicons-clock"></span><?php the_time(); ?></span></p>
