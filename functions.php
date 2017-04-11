@@ -2,7 +2,7 @@
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function theme_enqueue_styles() {
 	wp_enqueue_style( 'divi', get_template_directory_uri() . '/style.css' );
-	wp_enqueue_script( 'divi', plugin_dir_url( __FILE__ ) . 'js/scripts.js', array( 'jquery', 'divi-custom-script' ), '0.1.2', true );
+	wp_enqueue_script( 'divi', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery', 'divi-custom-script' ), '0.1.2', true );
 }
 
 function modify_user_contact_methods( $user_contact ) {
@@ -59,4 +59,38 @@ function nj_add_fullwidth_body_class( $classes ){
 	return $classes;
 }
 add_filter( 'body_class', 'nj_add_fullwidth_body_class' , 11);
+
+
+function nj_infinite_scrolling(){
+	wp_register_script(
+		'infinite_scrolling',
+		get_stylesheet_directory_uri().'/js/jquery.jscroll.min.js',
+		array('jquery'),
+		null,
+		true
+		);
+	if(is_singular()){
+		wp_enqueue_script('infinite_scrolling');
+	}
+}
+
+add_action('wp_enqueue_scripts', 'nj_infinite_scrolling');
+
+function set_infinite_scrolling(){
+	if(is_singular()){
+		?>
+		<script type="text/javascript">
+		jQuery('#main-content').jscroll({
+			loadingHtml: '<div class="container" style="text-align: center;"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/ajax-loading.gif" alt="Carregando" /></div>',
+			padding: 20,
+			nextSelector: 'nav.post-nav .nav-link-next a',
+			contentSelector: '#main-content'
+		});
+
+		</script>
+		<?php
+	}
+}
+
+add_action( 'wp_footer', 'set_infinite_scrolling',100);
 ?>

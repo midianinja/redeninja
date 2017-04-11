@@ -59,6 +59,10 @@ p.post-meta span {
 	line-height: 32px !important;
 	height: 32px !important;
 }
+nav.post-nav
+{
+	display: none;
+}
 </style>
 <div id="main-content">
 	<div class="container">
@@ -86,6 +90,7 @@ p.post-meta span {
 									<?php //Espaço para o social share ?>
 									<?php the_content(); ?>
 									<div class="bottom_ss"><?php //Espaço para o social share ?></div>
+									<nav class="post-nav"><span class="alignleft nav-link-previous"><?php previous_post_link("< %link"); ?></span><span class="alignright nav-link-next"><?php next_post_link("%link >"); ?></span></nav>
 								</div> <!-- .et_pb_column --><div class="et_pb_column et_pb_column_1_4  et_pb_column_1">
 
 								<div class="et_pb_module et_pb_space et_pb_divider_1"></div><div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_2">
