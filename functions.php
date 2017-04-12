@@ -2,6 +2,7 @@
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function theme_enqueue_styles() {
 	wp_enqueue_style( 'divi', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_style('Fjalla_one_font','https://fonts.googleapis.com/css?family=Fjalla+One');
 	wp_enqueue_script( 'divi', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery', 'divi-custom-script' ), '0.1.2', true );
 }
 
@@ -9,6 +10,8 @@ function modify_user_contact_methods( $user_contact ) {
 	$user_contact['avatar']   = __( 'Avatar Image Link'   );
 	$user_contact['facebook']   = __( 'Facebook Link'   );
 	$user_contact['twitter'] = __( 'Twitter Link' );
+	$user_contact['youtube']   = __( 'Youtube Link'   );
+	$user_contact['instagram'] = __( 'Instagram Link' );
 	$user_contact['video'] = __( 'Video Link' );
 
 	return $user_contact;
@@ -83,7 +86,7 @@ function set_infinite_scrolling(){
 		jQuery('#main-content').jscroll({
 			loadingHtml: '<div class="container" style="text-align: center;"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/ajax-loading.gif" alt="Carregando" /></div>',
 			padding: 20,
-			nextSelector: 'nav.post-nav .nav-link-next a',
+			nextSelector: 'nav.post-nav .nav-link-previous a',
 			contentSelector: '#main-content'
 		});
 
