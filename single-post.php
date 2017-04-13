@@ -115,6 +115,17 @@ nav.post-nav
 									<?php the_content(); ?>
 									<div class="bottom_ss"><?php echo do_shortcode("[addtoany]"); ?></div>
 									<nav class="post-nav"><span class="alignleft nav-link-previous"><?php previous_post_link("< %link"); ?></span><span class="alignright nav-link-next"><?php next_post_link("%link >"); ?></span></nav>
+									<div class="facebook_comments">
+										<div id="fb-root"></div>
+										<script>(function(d, s, id) {
+											var js, fjs = d.getElementsByTagName(s)[0];
+											if (d.getElementById(id)) return;
+											js = d.createElement(s); js.id = id;
+											js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+											fjs.parentNode.insertBefore(js, fjs);
+										}(document, 'script', 'facebook-jssdk'));</script>
+										<div class="fb-comments" data-href="<?php the_permalink(); ?>" data-width="100%" data-numposts="10" data-order-by="social" data-colorscheme="light"></div>
+									</div>
 								</div> <!-- .et_pb_column --><div class="nj_post_author_card et_pb_column et_pb_column_1_4  et_pb_column_1">
 
 								<div class="author_card_img et_pb_module et-waypoint et_pb_image et_pb_animation_off et_pb_image_1 et_always_center_on_mobile et-animated">
@@ -154,14 +165,6 @@ nav.post-nav
 			</div> <!-- .entry-content -->
 			<div class="et_post_meta_wrapper">
 
-				<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="http://staticxx.facebook.com/connect/xd_arbiter/r/nRK_i0jz87x.js?version=42#channel=f330605d0ce0498&amp;origin=http%3A%2F%2Fredeninja.redelivre.org.br" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="https://staticxx.facebook.com/connect/xd_arbiter/r/nRK_i0jz87x.js?version=42#channel=f330605d0ce0498&amp;origin=http%3A%2F%2Fredeninja.redelivre.org.br" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
-				<script>(function(d, s, id) {
-					var js, fjs = d.getElementsByTagName(s)[0];
-					if (d.getElementById(id)) return;
-					js = d.createElement(s); js.id = id;
-					js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8";
-					fjs.parentNode.insertBefore(js, fjs);
-				}(document, 'script', 'facebook-jssdk'));</script>
 			</div> <!-- .et_post_meta_wrapper -->
 		</article>
 

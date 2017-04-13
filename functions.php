@@ -87,7 +87,8 @@ function set_infinite_scrolling(){
 			loadingHtml: '<div class="container" style="text-align: center;"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/ajax-loading.gif" alt="Carregando" /></div>',
 			padding: 20,
 			nextSelector: 'nav.post-nav .nav-link-previous a',
-			contentSelector: '#content-area'
+			contentSelector: '#content-area',
+			callback: function(a,b) { jQuery( document.body ).trigger( 'post-load' ); FB.XFBML.parse(jQuery("article:last")[0]); }
 		});
 
 		</script>
