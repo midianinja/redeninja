@@ -14,19 +14,407 @@
 
  @font-face {font-family: 'Times Condensed'; src: url('fonts/TimesNRCondensedBold.eot'); src: url('fonts/TimesNRCondensedBold.eot?#iefix') format('embedded-opentype'), url('fonts/TimesNRCondensedBold.woff') format('woff'), url('fonts/TimesNRCondensedBold.ttf') format('truetype'); font-weight: bold; font-style: normal;}
 
- .et_post_meta_wrapper h1 {
- 	font-family: 'Times Condensed', Arial;
- 	font-size: 57px !important;
+ @media (max-width: 459px)
+ {
+ 	h1.entry-title
+ 	{
+ 		font-size: 37px !important;
+ 	}
+ 	.et_post_meta_wrapper {
+ 		width: 90% !important;
+ 		padding-top: 2em !important;
+
+ 	}
+ 	.entry-content .et_pb_section {
+ 		padding-top: 0px !important;
+ 	}
+ 	.entry-content .et_pb_row {
+ 		padding: 0 !important;
+ 	}
+ 	.et_pb_row_3-4_1-4 {
+ 		margin: 0 !important;
+ 		width: 100% !important;
+ 	}
+ 	.et_pb_row {
+ 		margin: 0;
+ 		width: 100%;
+ 	}
+ 	.post-body > *:not(div) {
+ 		width: 90% !important;
+ 		margin-left: auto;
+ 		margin-right: auto;
+ 	}
+ 	.post-body {
+
+ 		font-size: 16px !important;
+
+ 	}
+ 	.post-body h1 {
+ 		font-size: 23px !important;
+ 		margin-bottom: 0.2em !important;
+ 		margin-top: 1em !important;
+ 	}
+ 	.post-body h2 {
+ 		font-size: 20px !important;
+ 		margin-bottom: 0.2em !important;
+ 		margin-top: 1em !important;
+ 	}
+ 	.post-body h3 {
+ 		font-size: 20px !important;
+ 		margin-bottom: 0.2em !important;
+ 		margin-top: 1em !important;
+ 	}
+ 	.addtoany_shortcode
+ 	{
+ 		width: 90%;
+ 		margin: 0 auto !important;
+
+ 	}
+ 	.bottom_ss .addtoany_shortcode
+ 	{
+ 		text-align: center;
+ 	}
+ 	#nj_author_post_card
+ 	{
+ 		width: 100% !important;
+ 	}
+ 	.nj_author_meta_mob {
+ 		display: inherit !important;
+ 	}
+ 	.nj_author_card_pic_right {
+ 		padding: 0 10%;
+ 	}
+ 	.author_card_info * {
+ 		text-align: center !important;
+ 	}
+ 	.author_card_info .et_pb_divider {
+ 		display: none;
+ 	}
+ 	.card_ds .post-content {
+ 		display: block !important;
+ 		float: none !important;
+ 	}
+ 	.nj_post_author_card {
+ 		padding: 5%;
+ 	}
+ 	#page-capa #colunistas .et_pb_column {
+ 		width: 50% !important;
+ 		padding: 5%;
+ 	}
+ 	#destaque2 {
+ 		display: none;
+ 	}
+ 	#destaque3 {
+ 		display: none;
+ 	}
+ 	.post-body ul, .post-body ol {
+ 		padding-left: 1em !important;
+ 	}
+ 	#know-more-author {
+ 		margin: 0 5% !important;
+ 	}
+ 	.author_card_info a {
+ 		display: inline-block !important;
+ 		text-align: center !important;
+ 	}
+ 	.nj_author_meta_mob span {
+ 		margin-left: 0.75em;
+ 	}
+ }
+
+ @media (min-width: 460px) and (max-width: 980px)
+ {
+ 	.et_pb_row {
+ 		margin: 0;
+ 		width: 100%;
+ 	}
+ 	.et_pb_row_3-4_1-4 {
+ 		margin: 0 !important;
+ 		width: 100% !important;
+ 	}
+ 	.entry-content .et_pb_section {
+ 		padding-top: 0px !important;
+ 	}
+ 	p.post-meta {
+ 		font-size: 18px !important;
+ 	}
+ 	span.dashicons.dashicons-clock {
+ 		font-size: 20px !important;
+ 	}
+ 	.post-body h3
+ 	{
+ 		width: 73.625%;
+ 		margin: 0 auto !important;
+ 	}
+ 	.addtoany_shortcode
+ 	{
+ 		width: 73.625%;
+ 		margin: 0 auto !important;
+ 	}
+ 	.addtoany_shortcode .a2a_svg {
+ 		width: 32px !important;
+ 		line-height: 32px !important;
+ 		height: 32px !important;
+ 	}
+ 	.addtoany_shortcode .a2a_count {
+ 		line-height: 32px !important;
+ 		height: 32px !important;
+ 	}
+ 	.et_post_meta_wrapper {
+ 		width: 73.625% !important;
+ 		padding-top: 3em !important;
+ 	}
+ 	h1.entry-title {
+ 		font-size: 57px !important;
+ 		letter-spacing: -0.02em;
+ 	}
+ 	.nj_author_meta_mob {
+ 		display: inherit !important;
+ 		margin: 1em 0 2em !important;
+ 	}
+ 	.nj_author_meta_mob img {
+ 		width: 75px !important;
+ 	}
+ 	.nj_author_meta_mob span {
+ 		margin-left: 0.5em !important;
+ 		font-size: 1.5em;
+ 	}
+ 	.nj_author_card_pic_right {
+ 		padding-right: 1em;
+ 	}
+ 	.nj_post_author_card {
+ 		width: 73.625% !important;
+ 		margin: 0 13.1875% !important;
+ 	}
+ 	.card_ds .post-content {
+ 		display: block;
+ 		float: none;
+ 	}
+ 	#page-capa #colunistas .et_pb_column {
+ 		width: 50% !important;
+ 		padding: 5%;
+ 	}
+ 	.author_card_info {
+ 		display: inline-block;
+ 		width: 60%;
+ 		vertical-align: top;
+ 	}
+ 	.author_card_img {
+ 		display: inline-block;
+ 		width: 40%;
+ 		vertical-align: top;
+ 	}
+ 	.top_ss {
+ 		margin-bottom: 1em;
+ 	}
+ 	#destaque3 {
+ 		display: none;
+ 	}
+ 	.destaque_slider .et_pb_column {
+ 		width: 50% !important;
+ 	}
+ 	.post-body ul, .post-body ol {
+ 		padding-left: 2em !important;
+ 	}
+ 	#know-more-author {
+ 		margin-bottom: 0 !important;
+ 	}
+ }
+ @media (min-width: 981px)
+ {
+ 	.et_post_meta_wrapper h1.entry-title {
+ 		font-size: 57px !important;
+ 		letter-spacing: -0.02em;
+ 	}
+ 	.post-body h1 {
+ 		font-size: 30px !important;
+ 	}
+ 	.et_post_meta_wrapper
+ 	{
+ 		padding-top: 3em !important;
+ 	}
+ 	.et_post_meta_wrapper h1 {
+ 		width: 73.625%;
+ 	}
+ 	.nj_post_author_card
+ 	{
+ 		margin-top: 2em;
+ 	}
+ 	.post-body ul, .post-body ol {
+ 		padding-left: 3em !important;
+ 	}
+
+ }
+ .et_post_meta_wrapper h1.entry-title {
+ 	font-family: 'Times Condensed', Arial !important;
  	letter-spacing: -0.02em;
  }
+ #main-header, #main-header * {
+ 	height: 34px;
+ }
+
+ #top-menu li {
+ 	font-family: 'Source Sans Pro';
+ 	font-weight: 100;
+ }
+ #top-menu li a {
+ 	line-height: 34px;
+ 	/* padding: 0 !important; */
+ }
+ #et-top-navigation {
+ 	padding-top: 0 !important;
+ }
+
  .wp-caption {
  	border:none;
  	background:none;
  	color: #666;
  	line-height:normal;
+ 	max-width: 100%;
+ 	padding: 0;
  }
- @media only screen and ( min-width: 981px ) {
- 	.et_post_meta_wrapper h1 {
- 		width: 73.625%;
- 	}
+
+ .wp-caption p.wp-caption-text {
+ 	font-size: 11px;
+ 	font-family: 'Source Sans Pro';
  }
+ .post-body {
+ 	font-family: 'Droid Serif';
+ 	font-size: 18px;
+ 	color: #444444;
+ }
+
+ .post-body a:hover {
+ 	color: #444444;
+ 	border-bottom: 1px solid #FFFFFF;
+ }
+
+ .post-body a {
+ 	color: #444444;
+ 	border-bottom: 1px solid #444444;
+ 	transition: all 0.3s;
+ }
+
+
+ .post-body h1, .post-body  h2, .post-body  h3, .post-body  h4, .post-body  h5, .post-body  h6 {
+ 	font-family: 'Source Sans Pro';
+ 	font-weight: 900;
+ 	margin-top: 0.8em;
+ }
+ .post-body h2 {
+ 	font-family: 'Fjalla One';
+ 	color: #808080;
+ 	font-size: 25px;
+ 	font-weight: 400;
+ 	line-height: 1.3em;
+ }
+ .post-body h3 {
+ 	font-family: 'Fjalla One';
+ 	color: #808080;
+ 	font-size: 25px;
+ 	font-weight: 400;
+ 	line-height: 1.3em;
+ }
+
+ .post-body blockquote {
+ 	font-family: 'Source Sans Pro';
+ 	font-weight: 300;
+ 	font-style: italic;
+ 	font-size: 30px;
+ 	line-height: 1.2em;
+ 	color: #000000;
+ 	border: none;
+ 	margin-bottom: 1.5em !important;
+ 	margin-top: 0.5em !important;
+ }
+
+
+
+ .post-body > *:not(div):not(h3) {
+ 	width: 73.625%;
+ 	margin-left: auto !important;
+ 	margin-right: auto !important;
+ }
+ .author-name
+ {
+ 	font-family: 'Source Sans Pro';
+ 	font-weight: bold;
+ 	font-size: 20px;
+ }
+ h2.et_pb_slide_title a {
+ 	font-size: 20px !important;
+ }
+
+ .nj_author_card_icon {
+ 	margin-top: 20px;
+ 	width: 32px;
+ }
+
+ .nj_author_card_text
+ {
+ 	line-height: 24px;
+ }
+ .nj_author_meta_mob {
+ 	display: none;
+ 	margin-bottom: 1em;
+ }
+ .nj_author_meta_mob img {
+ 	width: 45px;
+ 	display: inline-block;
+ 	vertical-align: middle !important;
+ }
+ .nj_author_meta_mob span {
+ 	line-height: 45px;
+ 	display: inline-block;
+ 	font-family: 'Fjalla One';
+ 	text-transform: uppercase;
+ 	vertical-align: middle !important;
+ 	margin-left: 1em;
+ }
+ span.dashicons.dashicons-clock {
+ 	font-size: 1em;
+ }
+ p.post-meta span {
+ 	vertical-align: sub;
+ }
+
+ .nj_author_page_title p {
+ 	text-align: center;
+ 	font-family: 'Times Condensed';
+ }
+ #opn_title {
+ 	font-family: 'Times Condensed';
+ }
+
+ #main-footer, #footer-bottom {
+ 	background-color: #222;
+ 	height: 30px;
+ 	padding: 0 !important;
+ }
+ #main-footer .container {
+ 	font-size: 30px;
+ }
+
+ #know-more-author {
+ 	text-align: center;
+ 	font-size: 30px;
+ 	font-family: 'Source Sans Pro';
+ 	font-weight: lighter;
+ 	color: #444444;
+ 	margin-bottom: 2em;
+ }
+
+ .et_pb_slider, .et_pb_slider .et_pb_container {
+ 	height: 45vh !important;
+ }
+ .et_pb_slider, .et_pb_slider .et_pb_slide {
+ 	max-height: 45vh;
+ }
+ .et_pb_slider .et_pb_slide_description {
+ 	position: relative;
+ 	top: 25%;
+ 	padding-top: 0 !important;
+ 	padding-bottom:0 !important;
+ 	height:auto !important;
+ }
+

@@ -47,9 +47,9 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 					<div class="et_pb_column et_pb_column_4_4  et_pb_column_0">
 
-						<div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_0">
+						<div class="nj_author_page_title et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_0">
 
-							<p style="text-align: center;"><?php the_author_meta('display_name',$author_ID); ?></p>
+							<p><?php the_author_meta('display_name',$author_ID); ?></p>
 
 						</div>
 						<div class="et_pb_module et_pb_space et_pb_divider et_pb_divider_0"></div>
@@ -66,9 +66,13 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 						<p><?php the_author_meta('description',$author_ID); ?><br>
 							<?php if (get_the_author_meta('twitter',$author_ID)) { ?>
-							<a href="<?php the_author_meta('twitter',$author_ID); ?>" target="_blank"><img class="alignleft wp-image-193 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/twitter.png"; ?>" alt="Twitter" width="35" height="35"></a>
+							<a href="<?php the_author_meta('twitter',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-193 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/twitter.svg"; ?>" alt="Twitter" width="35" height="35"></a>
 							<?php } if (get_the_author_meta('facebook',$author_ID)) { ?>
-							<a href="<?php the_author_meta('facebook',$author_ID); ?>" target="_blank"><img class="alignleft wp-image-194 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/facebook.png"; ?>" alt="Facebook" width="34" height="34"></a>
+							<a href="<?php the_author_meta('facebook',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-194 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/facebook.svg"; ?>" alt="Facebook" width="34" height="34"></a>
+							<?php } if (get_the_author_meta('youtube',$author_ID)) { ?>
+							<a href="<?php the_author_meta('youtube',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-194 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/youtube.svg"; ?>" alt="Youtube" width="34" height="34"></a>
+							<?php } if (get_the_author_meta('instagram',$author_ID)) { ?>
+							<a href="<?php the_author_meta('instagram',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-194 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/instagram.svg"; ?>" alt="Instagram" width="34" height="34"></a>
 							<?php } ?>
 						</p>
 
@@ -85,7 +89,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 						<div class="et_pb_blog_grid clearfix et_pb_module et_pb_bg_layout_light  et_pb_blog_0" data-columns="2">
 							<?php while ( have_posts() ) : the_post(); ?>
 							<?php $rpost = get_post(get_the_ID()); ?>
-							<div class="column size-1of2">
+							<div id="nj_author_post_card" class="column size-1of2">
 								<article id="<?php the_ID(); ?>" class="et_pb_post clearfix post type-post status-publish format-standard has-post-thumbnail hentry">
 
 									<div class="et_pb_image_container"><a href="<?php echo get_post_permalink($rpost->ID); ?>" class="entry-featured-image-url">
@@ -93,11 +97,11 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 									</div> <!-- .et_pb_image_container -->
 									<h2 class="entry-title"><a href="<?php echo get_post_permalink($rpost->ID); ?>"><?php echo $rpost->post_title; ?></a></h2>
 									<div class="card_ds">
-										<p class="post-meta">  <span class="published"><?php echo get_the_date('d, F, Y',$rpost->ID); ?></span></p><div class="post-content"><p>
-										<?php //Espaço para o social share ?>
+										<p class="post-meta"><span class="published"><?php the_date('d/m/Y'); ?><span class="dashicons dashicons-clock"></span><?php the_time(); ?></span></p><div class="post-content">
+										<?php echo do_shortcode("[addtoany]"); ?>
 									</div>
 									<div class="card_ex">
-										<?php echo get_the_excerpt($rpost->ID); ?></p>
+										<p><?php echo get_the_excerpt($rpost->ID); ?></p>
 									</div>
 								</div>
 							</article>
