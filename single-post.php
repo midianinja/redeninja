@@ -10,8 +10,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 
 <style>
-.et_pb_text_2 { font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif; font-weight: bold; text-transform: uppercase;font-size: 21px; margin-bottom: 1px !important; }
-.et_pb_divider_2:before { border-top-color: #000000; }
 .et_pb_image_1 { margin-left: 0; }
 .et_pb_text_3 { font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif; }
 .et_pb_text_1 { font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif;font-size: 18px; letter-spacing: 1px; line-height: 1.9em; margin-top: 75px !important; margin-right: 40px !important; margin-left: 40px !important; }
@@ -126,52 +124,20 @@ nav.post-nav
 										}(document, 'script', 'facebook-jssdk'));</script>
 										<div class="fb-comments" data-href="<?php the_permalink(); ?>" data-width="100%" data-numposts="10" data-order-by="social" data-colorscheme="light"></div>
 									</div>
-								</div> <!-- .et_pb_column --><div class="nj_post_author_card et_pb_column et_pb_column_1_4  et_pb_column_1">
+								</div> <!-- .et_pb_column -->
+								<?php nj_author_card($author_ID); ?>
 
-								<div class="author_card_img et_pb_module et-waypoint et_pb_image et_pb_animation_off et_pb_image_1 et_always_center_on_mobile et-animated">
-									<a href="<?php echo get_author_posts_url($author_ID); ?>"><img class="nj_author_card_pic_right" src="<?php the_author_meta('avatar',$author_ID); ?>" alt="<?php the_author_meta('display_name',$author_ID); ?>">
-									</a>
-								</div><div class="author_card_info">
-								<div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_2">
+					</div> <!-- .et_pb_section -->
+				</div> <!-- .entry-content -->
+				<div class="et_post_meta_wrapper">
 
-									<p><a class="author-name" href="<?php echo get_author_posts_url($author_ID); ?>"><?php the_author_meta('display_name',$author_ID); ?></a></p>
+				</div> <!-- .et_post_meta_wrapper -->
+			</article>
 
-								</div><div class="et_pb_module et_pb_space et_pb_divider et_pb_divider_2"></div>
-								<div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_3">
-
-									<div class="_3c-4 _2x70 __2p _2pi0 _52jv">
-										<div class="_50f9 _50f3">
-											<p><?php the_author_meta('description',$author_ID); ?><br>
-												<?php if (get_the_author_meta('twitter',$author_ID)) { ?>
-												<a href="<?php the_author_meta('twitter',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-193 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/twitter.svg"; ?>" alt="Twitter" width="35" height="35"></a>
-												<?php } if (get_the_author_meta('facebook',$author_ID)) { ?>
-												<a href="<?php the_author_meta('facebook',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-194 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/facebook.svg"; ?>" alt="Facebook" width="34" height="34"></a>
-												<?php } if (get_the_author_meta('youtube',$author_ID)) { ?>
-												<a href="<?php the_author_meta('youtube',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-194 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/youtube.svg"; ?>" alt="Youtube" width="34" height="34"></a>
-												<?php } if (get_the_author_meta('instagram',$author_ID)) { ?>
-												<a href="<?php the_author_meta('instagram',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-194 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/instagram.svg"; ?>" alt="Instagram" width="34" height="34"></a>
-												<?php } ?>
-											</p>
-										</div>
-									</div>
-
-								</div> <!-- .et_pb_text -->
-							</div>
-						</div> <!-- .et_pb_column -->
-
-					</div> <!-- .et_pb_row -->
-
-				</div> <!-- .et_pb_section -->
-			</div> <!-- .entry-content -->
-			<div class="et_post_meta_wrapper">
-
-			</div> <!-- .et_post_meta_wrapper -->
-		</article>
-
-	<?php endwhile; ?>
-</div> <!-- #left-area -->
-<div id="know-more-author">Conheça outros colunistas e suas opiniões!</div>
-<?php nj_destaque_slider(5000); ?>
+		<?php endwhile; ?>
+	</div> <!-- #left-area -->
+	<div id="know-more-author">Conheça outros colunistas e suas opiniões!</div>
+	<?php nj_destaque_slider(5000); ?>
 </div> <!-- #content-area -->
 
 </div> <!-- .container -->
