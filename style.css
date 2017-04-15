@@ -158,6 +158,30 @@
  	#page-capa .author_card_info .et_pb_divider {
  		margin-bottom: 0.5em;
  	}
+ 	.author-page .card_ds .addtoany_shortcode {
+ 		display: none;
+ 	}
+ 	.author-page #nj_author_post_card {
+ 		width: 100%;
+ 		margin-right: 0 !important;
+ 	}
+ 	.author-page .author_card_img {
+ 		width: 30%;
+ 		padding-right: 5%;
+ 	}
+ 	.author-page .author_card_info {
+ 		width: 70% !important;
+ 	}
+ 	.author-page .nj_post_author_card > * {
+ 		display: inline-block;
+ 		vertical-align: top;
+ 	}
+ 	.author-page .author_card_info .et_pb_divider {
+ 		margin-bottom: 0.5em !important;
+ 	}
+ 	.author_card_info .author-name, .author_card_info .et_pb_divider {
+ 		display: none;
+ 	}
  }
 
  @media (min-width: 460px) and (max-width: 980px)
@@ -266,6 +290,46 @@
  	#know-more-author {
  		margin-bottom: 0 !important;
  	}
+ 	.author_card_info .et_pb_divider {
+ 		margin-bottom: 0.5em !important;
+ 	}
+ 	.author-page .nj_post_author_card  {
+ 		width: 20.875% !important;
+ 		margin-right: 5.5% !important;
+ 		margin-left: 0 !important;
+ 	}
+ 	.author-page #nj_post_author_content {
+ 		width: 73.625% !important;
+ 	}
+ 	.author-page#main-content {
+ 		width: 90%;
+ 		margin: 0 auto;
+ 	}
+ 	.author-page .entry-title {
+ 		display: none;
+ 	}
+ 	.author-page .author_card_info .author-name {
+ 		font-family: 'Times Condensed' !important;
+ 		text-transform: none;
+ 		font-size: 25px;
+ 	}
+ 	.author-page .card_ds .addtoany_shortcode {
+ 		display: none;
+ 	}
+ 	.author-page .nj_author_card_icon {
+ 		width: 25px !important;
+ 		margin-right: 7px !important;
+ 	}
+ 	.author-page #nj_author_post_card {
+ 		margin-bottom: 0 !important;
+ 	}
+ 	.author-page #nj_author_post_card {
+ 		width: 49% !important;
+ 	}
+ 	.author-page #nj_author_post_card:not(:nth-child(2n))
+ 	{
+ 		margin-right: 2% !important;
+ 	}
  }
  @media (min-width: 981px)
  {
@@ -289,6 +353,19 @@
  	}
  	.post-body ul, .post-body ol {
  		padding-left: 3em !important;
+ 	}
+ 	.author_card_info .et_pb_divider {
+ 		margin-bottom: 0.5em !important;
+ 	}
+ 	.author-page #nj_author_post_card {
+ 		width: 49% !important;
+ 	}
+ 	.author-page #nj_author_post_card:not(:nth-child(2n))
+ 	{
+ 		margin-right: 2% !important;
+ 	}
+ 	.author-page .author_card_info .author-name, .author-page .author_card_info .et_pb_divider {
+ 		display: none;
  	}
 
  }
@@ -428,6 +505,8 @@
  .nj_author_page_title p {
  	text-align: center;
  	font-family: 'Times Condensed';
+ 	font-size: 55px;
+ 	letter-spacing: -2px;
  }
  #opn_title {
  	font-family: 'Times Condensed';
@@ -507,3 +586,7 @@
  .destaque_slider .et_pb_section {
  	padding-bottom: 0 !important;
  }
+
+
+
+

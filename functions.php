@@ -281,4 +281,17 @@ function nj_destaque_slider($speed)
 	echo do_shortcode($string);
 
 }
+
+add_action( 'pre_get_posts',  'set_posts_per_page', 99999 );
+function set_posts_per_page( $query ) {
+
+	global $wp_the_query;
+
+	if ( ( ! is_admin() ) && ( $query->is_author() ) ) {
+		$query->set( 'posts_per_page', 10 );
+	}
+
+	return $query;
+}
+
 ?>

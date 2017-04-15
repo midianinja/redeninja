@@ -34,16 +34,16 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 	padding: 0;
 }
 </style>
-<div id="main-content">
+<div id="main-content" class="author-page">
 	<?php $author_ID = get_query_var( 'author' ); ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
+	<article id="author-<?php the_ID(); ?>">
 		<div class="entry-content">
 			<div class="et_pb_section  et_pb_section_0 et_section_regular">
 
 
 
-				<div class=" et_pb_row et_pb_row_0">
+				<div class="entry-title et_pb_row et_pb_row_0">
 
 					<div class="et_pb_column et_pb_column_4_4  et_pb_column_0">
 
@@ -57,64 +57,43 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 				</div>
 				<div class="et_pb_row et_pb_row_1 et_pb_row_1-4_3-4">
-					<div class="et_pb_column et_pb_column_1_4  et_pb_column_1">
+					<?php nj_author_card($author_ID); ?>
+					<!-- COMEÇA O LOOP -->
+					<div id="nj_post_author_content" class="et_pb_column et_pb_column_3_4  et_pb_column_2">
 
-						<div class="et_pb_module et-waypoint et_pb_image et_pb_animation_off et_pb_image_0 et_always_center_on_mobile et-animated">
-							<img src="<?php the_author_meta('avatar',$author_ID); ?>" alt="<?php the_author_meta('display_name',$author_ID); ?>">
+						<div class="et_pb_module">
+							<?php echo wp_oembed_get(get_the_author_meta('video',$author_ID)); ?>
 
-						</div><div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_1">
-
-						<p><?php the_author_meta('description',$author_ID); ?><br>
-							<?php if (get_the_author_meta('twitter',$author_ID)) { ?>
-							<a href="<?php the_author_meta('twitter',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-193 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/twitter.svg"; ?>" alt="Twitter" width="35" height="35"></a>
-							<?php } if (get_the_author_meta('facebook',$author_ID)) { ?>
-							<a href="<?php the_author_meta('facebook',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-194 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/facebook.svg"; ?>" alt="Facebook" width="34" height="34"></a>
-							<?php } if (get_the_author_meta('youtube',$author_ID)) { ?>
-							<a href="<?php the_author_meta('youtube',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-194 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/youtube.svg"; ?>" alt="Youtube" width="34" height="34"></a>
-							<?php } if (get_the_author_meta('instagram',$author_ID)) { ?>
-							<a href="<?php the_author_meta('instagram',$author_ID); ?>" target="_blank"><img class="nj_author_card_icon alignleft wp-image-194 size-full" src="<?php echo get_stylesheet_directory_uri()."/images/instagram.svg"; ?>" alt="Instagram" width="34" height="34"></a>
-							<?php } ?>
-						</p>
-
-					</div> <!-- .et_pb_text -->
-				</div>
-				<!-- COMEÇA O LOOP -->
-				<div class="et_pb_column et_pb_column_3_4  et_pb_column_2">
-
-					<div class="et_pb_module">
-						<?php echo wp_oembed_get(get_the_author_meta('video',$author_ID)); ?>
-
-					</div>
-					<div class="et_pb_blog_grid_wrapper">
-						<div class="et_pb_blog_grid clearfix et_pb_module et_pb_bg_layout_light  et_pb_blog_0" data-columns="2">
-							<?php while ( have_posts() ) : the_post(); ?>
-							<?php $rpost = get_post(get_the_ID()); ?>
-							<div id="nj_author_post_card" class="column size-1of2">
-								<article id="<?php the_ID(); ?>" class="et_pb_post clearfix post type-post status-publish format-standard has-post-thumbnail hentry">
-
-									<div class="et_pb_image_container"><a href="<?php echo get_post_permalink($rpost->ID); ?>" class="entry-featured-image-url">
-										<?php echo get_the_post_thumbnail($rpost->ID); ?></a>
-									</div> <!-- .et_pb_image_container -->
-									<h2 class="entry-title"><a href="<?php echo get_post_permalink($rpost->ID); ?>"><?php echo $rpost->post_title; ?></a></h2>
-									<div class="card_ds">
-										<p class="post-meta"><span class="published"><?php the_date('d/m/Y'); ?><span class="dashicons dashicons-clock"></span><?php the_time(); ?></span></p><div class="post-content">
-										<?php echo do_shortcode("[addtoany]"); ?>
-									</div>
-									<div class="card_ex">
-										<p><?php echo get_the_excerpt($rpost->ID); ?></p>
-									</div>
-								</div>
-							</article>
 						</div>
-					<?php endwhile; ?>
-				</div> <!-- .et_pb_posts -->
+						<div class="et_pb_blog_grid_wrapper">
+							<div class="et_pb_blog_grid clearfix et_pb_module et_pb_bg_layout_light  et_pb_blog_0" data-columns="2">
+								<?php while ( have_posts() ) : the_post(); ?>
+								<?php $rpost = get_post(get_the_ID()); ?><div id="nj_author_post_card" class="column size-1of2">
+									<article id="<?php the_ID(); ?>" class="et_pb_post clearfix post type-post status-publish format-standard has-post-thumbnail hentry">
+
+										<div class="et_pb_image_container"><a href="<?php echo get_post_permalink($rpost->ID); ?>" class="entry-featured-image-url">
+											<?php echo get_the_post_thumbnail($rpost->ID); ?></a>
+										</div> <!-- .et_pb_image_container -->
+										<h2 class="entry-title"><a href="<?php echo get_post_permalink($rpost->ID); ?>"><?php echo $rpost->post_title; ?></a></h2>
+										<div class="card_ds">
+											<p class="post-meta"><span class="published"><?php the_date('d/m/Y'); ?><span class="dashicons dashicons-clock"></span><?php the_time(); ?></span></p><div class="post-content">
+											<?php echo do_shortcode("[addtoany]"); ?>
+										</div>
+										<div class="card_ex">
+											<p><?php echo get_the_excerpt($rpost->ID); ?></p>
+										</div>
+									</div>
+								</article>
+							</div>
+						<?php endwhile; ?>
+					</div> <!-- .et_pb_posts -->
+				</div>
 			</div>
+			<!-- TERMINA O LOOP -->
+
+
 		</div>
-		<!-- TERMINA O LOOP -->
-
-
 	</div>
-</div>
 </div>
 
 </article> <!-- .et_pb_post -->
