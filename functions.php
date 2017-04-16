@@ -49,7 +49,7 @@ function nj_save_extra_profile_fields( $user_id ) {
 		return false;
 
 	/* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
-	update_usermeta( $user_id, 'prioridade', $_POST['prioridade'] );
+	update_user_meta( $user_id, 'prioridade', $_POST['prioridade'] );
 }
 
 
