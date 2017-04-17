@@ -319,10 +319,13 @@ function catch_that_image() {
 function fb_opengraph()
 {
 	global $post, $wp;
-	$author = get_user_by('slug',$wp->query_vars["author_name"]);
-	if (!empty($author))
+	if (isset($wp->query_vars["author_name"]))
 	{
-		$author_ID = $author->ID;
+		$author = get_user_by('slug',$wp->query_vars["author_name"]);
+		if (!empty($author))
+		{
+			$author_ID = $author->ID;
+		}
 	}
 	$current_url = home_url(add_query_arg(array(),$wp->request));
 
