@@ -319,7 +319,11 @@ function catch_that_image() {
 function fb_opengraph()
 {
 	global $post, $wp;
-
+	$author = get_user_by('slug',$wp->query_vars["author_name"]);
+	if (!empty($author))
+	{
+		$author_ID = $author->ID;
+	}
 	$current_url = home_url(add_query_arg(array(),$wp->request));
 
 	if (is_single() || is_page())
@@ -333,10 +337,10 @@ function fb_opengraph()
 	}
 	else if (is_author())
 	{
-		$img_src = get_the_author_meta('facebook_thumb');
+		$img_src = get_the_author_meta('facebook_thumb',$author_ID);
 		if (empty($img_src))
 		{
-			$img_src = get_the_author_meta('avatar');
+			$img_src = get_the_author_meta('avatar',$author_ID);
 		}
 	}
 
@@ -346,7 +350,7 @@ function fb_opengraph()
 	}
 	else if (is_author())
 	{
-		$desc = get_the_author_meta('description');
+		$desc = get_the_author_meta('description',$author_ID);
 	}
 	else
 	{
@@ -356,6 +360,10 @@ function fb_opengraph()
 	if (is_front_page())
 	{
 		$title = get_bloginfo('description');
+	}
+	else if (is_author())
+	{
+		$title = get_the_author_meta('display_name',$author_ID);
 	}
 	else
 	{
@@ -372,13 +380,14 @@ function fb_opengraph()
 	}
 	?>
 
-	<meta property="og:url" content="<?php echo $current_url; ?>"/>
-	<meta property="og:type" content="<?php echo $type; ?>"/>
-	<meta property="og:title" content="<?php echo $title; ?>"/>
-	<meta property="og:image" content="<?php echo $img_src; ?>"/>
-	<meta property="og:description" content="<?php echo $desc; ?>"/>
+	<meta property="og:url" content="<?php echo esc_attr($current_url); ?>"/>
+	<meta property="og:type" content="<?php echo esc_attr($type); ?>"/>
+	<meta property="og:title" content="<?php echo esc_attr($title); ?>"/>
+	<meta property="og:image" content="<?php echo esc_attr($img_src); ?>"/>
+	<meta property="og:description" content="<?php echo esc_attr($desc); ?>"/>
 	<meta property="og:site_name" content="Rede NINJA" />
 	<meta property="og:locale" content="pt_BR" />
+	<meta property="fb:app_id" content="320229188395757">
 
 	<?php
 }
