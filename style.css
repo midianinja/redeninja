@@ -179,7 +179,7 @@
  	.author-page .author_card_info .et_pb_divider {
  		margin-bottom: 0.5em !important;
  	}
- 	.author_card_info .author-name, .author_card_info .et_pb_divider {
+ 	.author-page .author_card_info .author-name, .author-page  .author_card_info .et_pb_divider {
  		display: none;
  	}
  }
@@ -525,7 +525,7 @@
  	text-align: center;
  	font-size: 30px;
  	font-family: 'Source Sans Pro';
- 	font-weight: 300;
+ 	font-weight: 400;
  	color: #444444;
  	margin-bottom: 2em;
  }
@@ -590,3 +590,48 @@
 
 
 
+ #page-capa #colunistas .et_pb_row {
+ 	display: flex;
+ 	flex-wrap: wrap;
+ 	justify-content: space-between;
+ }
+
+
+ #page-capa #colunistas .nj_post_author_card {
+ 	margin-right: 0 !important;
+ }
+
+ .filter_wrap
+ {
+ 	text-align: center;
+ }
+ .filter_wrap * {
+ 	vertical-align: middle;
+ }
+
+ .filter_wrap span:before {
+    font-size: 25px;
+    color: #444444;
+    border-bottom: 1px solid #444444;
+}
+.filter_wrap input {
+    font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 21px;
+    border: none;
+    border-bottom: 1px solid #444444;
+}
+ .author_tags
+ {
+ 	display: none;
+ }
+ .highlight
+ {
+ 	color: white;
+ 	background-color: black;
+ }
+
+ #colunistas {
+ 	min-height: 80vh;
+ }

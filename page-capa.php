@@ -51,7 +51,7 @@ get_header();
 </style>
 <div id="main-content">
 
-	<?php echo get_page(get_the_ID())->post_content; ?>
+	<?php //echo get_page(get_the_ID())->post_content; ?>
 
 
 	<article id="page-capa" class="page type-page status-publish hentry">
@@ -68,6 +68,7 @@ get_header();
 			nj_destaque_slider(5000);
 			?>
 			<div id="know-more-author">Conheça os colunistas da Mídia NINJA!</div>
+			<div class="filter_wrap"><input id="colunistas_filter" type="text"><span class="dashicons dashicons-search"></span></div>
 			<?php
 			$string = '';
 			$string .= '<div id="colunistas">[et_pb_section admin_label="Seção" transparent_background="off" allow_player_pause="off" inner_shadow="off" parallax="off" parallax_method="on" custom_padding="0px|0px|0px|0px" padding_mobile="off" make_fullwidth="off" use_custom_width="off" width_unit="off" custom_width_px="1080px" custom_width_percent="80%" make_equal="off" use_custom_gutter="off" fullwidth="off" specialty="off" disabled="off"][et_pb_row admin_label="row" make_fullwidth="off" use_custom_width="off" width_unit="off" custom_width_px="1080px" custom_width_percent="80%" use_custom_gutter="off" gutter_width="3" custom_padding="20px|0px|27px|0px" custom_padding_tablet="0px|0px|0px|0px" custom_padding_phone="0px||0px|" padding_mobile="off" allow_player_pause="off" parallax="off" parallax_method="on" make_equal="off" column_padding_mobile="on" parallax_1="off" parallax_method_1="on" parallax_2="off" parallax_method_2="on" parallax_3="off" parallax_method_3="on" parallax_4="off" parallax_method_4="on" custom_padding_last_edited="on|phone" disabled="off"]';
@@ -79,20 +80,21 @@ get_header();
 				'meta_key'      => 'prioridade',
 				);
 			$authors = get_users( $args );
-			$row_count = 1;
 			foreach ($authors as $author) {
 				$author_ID = $author->ID;
 				ob_start();
 				nj_author_card($author_ID);
 				$string .= ob_get_contents();
 				ob_end_clean();
-				if (($row_count % 4) == 0)
-				{
-					$string .= '[/et_pb_row][et_pb_row admin_label="row" make_fullwidth="off" use_custom_width="off" width_unit="off" custom_width_px="1080px" custom_width_percent="80%" use_custom_gutter="off" gutter_width="3" custom_padding="20px|0px|27px|0px" custom_padding_tablet="0px|0px|0px|0px" custom_padding_phone="0px||0px|" padding_mobile="off" allow_player_pause="off" parallax="off" parallax_method="on" make_equal="off" column_padding_mobile="on" parallax_1="off" parallax_method_1="on" parallax_2="off" parallax_method_2="on" parallax_3="off" parallax_method_3="on" parallax_4="off" parallax_method_4="on" custom_padding_last_edited="on|phone" disabled="off"]';
-					$row_count = 0;
-				}
-				$row_count++;
 			}
+			//Adiciona card em branco pra manter o alinhamento
+			for ($i=0; $i < 4; $i++) {
+				ob_start();
+				nj_author_card(-1);
+				$string .= ob_get_contents();
+				ob_end_clean();
+			}
+
 			$string .= '[/et_pb_row][/et_pb_section]</div>';
 			echo do_shortcode($string);
 			?>
@@ -100,7 +102,63 @@ get_header();
 
 
 	</article> <!-- .et_pb_post -->
+	<script>
+	jQuery.fn.highlight = function(pat) {
+		function innerHighlight(node, pat) {
+			var skip = 0;
+			if (node.nodeType == 3) {
+				var pos = node.data.toUpperCase().indexOf(pat);
+				pos -= (node.data.substr(0, pos).toUpperCase().length - node.data.substr(0, pos).length);
+				if (pos >= 0) {
+					var spannode = document.createElement('span');
+					spannode.className = 'highlight';
+					var middlebit = node.splitText(pos);
+					var endbit = middlebit.splitText(pat.length);
+					var middleclone = middlebit.cloneNode(true);
+					spannode.appendChild(middleclone);
+					middlebit.parentNode.replaceChild(spannode, middlebit);
+					skip = 1;
+				}
+			}
+			else if (node.nodeType == 1 && node.childNodes && !/(script|style)/i.test(node.tagName)) {
+				for (var i = 0; i < node.childNodes.length; ++i) {
+					i += innerHighlight(node.childNodes[i], pat);
+				}
+			}
+			return skip;
+		}
+		return this.length && pat && pat.length ? this.each(function() {
+			innerHighlight(this, pat.toUpperCase());
+		}) : this;
+	};
 
+	jQuery.fn.removeHighlight = function() {
+		return this.find("span.highlight").each(function() {
+			this.parentNode.firstChild.nodeName;
+			with (this.parentNode) {
+				replaceChild(this.firstChild, this);
+				normalize();
+			}
+		}).end();
+	};
+
+
+	</script>
+	<script>
+	jQuery.extend(jQuery.expr[":"], {
+		"containsNC": function(elem, i, match, array) {
+			return (elem.textContent || elem.innerText || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+		}
+	});
+	jQuery("#colunistas_filter").on("change paste keyup", function()
+	{
+		var val = jQuery(this).val();
+		jQuery(".nj_post_author_card").removeHighlight();
+		jQuery(".nj_post_author_card:not(.empty)").hide();
+		jQuery(".nj_post_author_card:containsNC('"+val+"')").show();
+		jQuery(".nj_post_author_card").highlight(jQuery(this).val());
+	});
+	</script>
 
 
 </div>

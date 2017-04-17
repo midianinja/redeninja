@@ -4,7 +4,6 @@ function theme_enqueue_styles() {
 	wp_enqueue_style( 'divi', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style('Fjalla_one_font','https://fonts.googleapis.com/css?family=Fjalla+One');
-	wp_enqueue_script( 'divi', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery', 'divi-custom-script' ), '0.1.2', true );
 }
 
 function modify_user_contact_methods( $user_contact ) {
@@ -14,6 +13,7 @@ function modify_user_contact_methods( $user_contact ) {
 	$user_contact['youtube']   = __( 'Youtube Link'   );
 	$user_contact['instagram'] = __( 'Instagram Link' );
 	$user_contact['video'] = __( 'Video Link' );
+	$user_contact['author_tags'] = __( 'Tags' );
 
 	return $user_contact;
 }
@@ -169,8 +169,8 @@ add_action( 'wp_footer', 'set_infinite_scrolling',100);
 function nj_author_card($author_ID)
 {
 	?>
-	<div class="nj_post_author_card et_pb_column et_pb_column_1_4  et_pb_column_1">
-
+	<div class="nj_post_author_card et_pb_column et_pb_column_1_4  et_pb_column_1 <?php if ($author_ID == -1) { echo "empty"; } ?>">
+		<?php if ($author_ID != -1) { ?>
 		<div class="author_card_img et_pb_module et-waypoint et_pb_image et_pb_animation_off et_pb_image_1 et_always_center_on_mobile et-animated">
 			<a href="<?php echo get_author_posts_url($author_ID); ?>"><img class="nj_author_card_pic_right" src="<?php the_author_meta('avatar',$author_ID); ?>" alt="<?php the_author_meta('display_name',$author_ID); ?>">
 			</a>
@@ -199,7 +199,9 @@ function nj_author_card($author_ID)
 			</div>
 
 		</div> <!-- .et_pb_text -->
+		<div class="author_tags"><?php the_author_meta('author_tags',$author_ID); ?></div>
 	</div>
+	<?php } ?>
 </div> <!-- .et_pb_column -->
 <?php
 }
