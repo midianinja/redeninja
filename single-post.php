@@ -33,7 +33,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 	.et_pb_text_0 { margin-right: 0px !important; margin-left: 0px !important; }
 }
 
-@media (min-width: 460px) and (max-width: 980px)
+@media (min-width: 480px) and (max-width: 980px)
 {
 	.et_pb_divider_0
 	{
@@ -41,7 +41,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 	}
 }
-@media (max-width: 459px)
+@media (max-width: 479px)
 {
 	.et_pb_divider_0
 	{

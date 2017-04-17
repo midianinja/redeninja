@@ -19,6 +19,7 @@ get_header();
 		padding-right: 0px;
 		padding-bottom: 0px;
 		padding-left: 0px;
+		margin-bottom: 1em;
 	}
 	.et_pb_row_1.et_pb_row {
 		padding-top: 31px;
@@ -63,7 +64,7 @@ get_header();
 			$slider_speed = 5000;
 			$slider_font_size = "200%";
 			$string = '';
-			$string .= '[et_pb_row admin_label="row" make_fullwidth="off" use_custom_width="off" width_unit="off" custom_width_px="1080px" custom_width_percent="80%" use_custom_gutter="off" gutter_width="3" custom_padding="27px|0px|0px|0px" padding_mobile="off" allow_player_pause="off" parallax="off" parallax_method="on" make_equal="off" column_padding_mobile="on" parallax_1="off" parallax_method_1="on" parallax_2="off" parallax_method_2="on" parallax_3="off" parallax_method_3="on" parallax_4="off" parallax_method_4="on" disabled="off"][et_pb_column type="4_4"][et_pb_text admin_label="Texto" background_layout="light" text_orientation="left" text_font="Droid Serif|on|||" text_font_size="50px" text_font_size_tablet="40px" text_font_size_last_edited="on|phone" text_line_height_tablet="1em" text_line_height_last_edited="on|tablet" use_border_color="off" border_style="solid" custom_margin_last_edited="on|phone" custom_padding_phone="|||" custom_padding_last_edited="on|phone" disabled="off"]<p id="opn_title" style="text-align: center;">opinião</p>[/et_pb_text][/et_pb_column][/et_pb_row]';
+			$string .= '[et_pb_row admin_label="row" make_fullwidth="off" use_custom_width="off" width_unit="off" custom_width_px="1080px" custom_width_percent="80%" use_custom_gutter="off" gutter_width="3" custom_padding="27px|0px|0px|0px" padding_mobile="off" allow_player_pause="off" parallax="off" parallax_method="on" make_equal="off" column_padding_mobile="on" parallax_1="off" parallax_method_1="on" parallax_2="off" parallax_method_2="on" parallax_3="off" parallax_method_3="on" parallax_4="off" parallax_method_4="on" disabled="off"][et_pb_column type="4_4"][et_pb_text admin_label="Texto" background_layout="light" text_orientation="left" text_font="Droid Serif|on|||" text_font_size="50px" text_font_size_tablet="40px" text_font_size_last_edited="on|phone" text_line_height_tablet="1em" text_line_height_last_edited="on|tablet" use_border_color="off" border_style="solid" custom_margin_last_edited="on|phone" custom_padding_phone="|||" custom_padding_last_edited="on|phone" disabled="off"]<p id="opn_title" style="text-align: center;">'.get_the_title().'</p>[/et_pb_text][et_pb_divider admin_label="Divisor" color="#000000" show_divider="on" divider_style="solid" divider_position="top" divider_weight="1px" hide_on_mobile="off" disabled="off"][/et_pb_divider][/et_pb_column][/et_pb_row]';
 			echo do_shortcode($string);
 			nj_destaque_slider(5000);
 			?>

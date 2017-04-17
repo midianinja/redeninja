@@ -14,7 +14,7 @@
 
  @font-face {font-family: 'Times Condensed'; src: url('fonts/TimesNRCondensedBold.eot'); src: url('fonts/TimesNRCondensedBold.eot?#iefix') format('embedded-opentype'), url('fonts/TimesNRCondensedBold.woff') format('woff'), url('fonts/TimesNRCondensedBold.ttf') format('truetype'); font-weight: bold; font-style: normal;}
 
- @media (max-width: 459px)
+ @media (max-width: 479px)
  {
  	#opn_title {
  		margin-top: 30px;
@@ -84,6 +84,25 @@
  	.nj_author_meta_mob {
  		display: inherit !important;
  	}
+ 	.nj_author_page_title p {
+ 		margin-top: 0.5em !important;
+ 	}
+ 	.author-page .nj_author_page_title {
+ 		margin-top: 0.2em !important;
+ 		margin-bottom: 0 !important;
+ 	}
+ 	.author-page .nj_author_page_title p
+ 	{
+ 		margin-bottom: 0.2em !important;
+ 		margin-top: 0 !important;
+ 	}
+ 	.nj_author_card_icon {
+ 		margin-right: 5px !important;
+ 		width: 25px !important;
+ 	}
+ 	.author-page .entry-title .et_pb_column {
+ 		margin-bottom: 0 !important;
+ 	}
  	body.single-post .nj_author_card_pic_right {
  		padding: 0 10%;
  	}
@@ -99,6 +118,11 @@
  	}
  	.nj_post_author_card {
  		padding: 5%;
+ 	}
+
+ 	.author-page .nj_post_author_card
+ 	{
+ 		margin-bottom: 0 !important;
  	}
  	#page-capa #colunistas .nj_post_author_card {
  		width: 50% !important;
@@ -146,7 +170,7 @@
  	.destaque_slider .et_pb_column {
  		width: 100% !important;
  	}
- 	#page-capa .author_desc {
+ 	#page-capa .author_desc, .author-page .author_desc {
  		font-size: 12px;
  		line-height: 15px;
  	}
@@ -158,6 +182,10 @@
  	#page-capa .author_card_info .et_pb_divider {
  		margin-bottom: 0.5em;
  	}
+
+ 	#page-capa .et_pb_row_0 .et_pb_divider {
+ 		display: none;
+ 	}
  	.author-page .card_ds .addtoany_shortcode {
  		display: none;
  	}
@@ -166,11 +194,11 @@
  		margin-right: 0 !important;
  	}
  	.author-page .author_card_img {
- 		width: 30%;
+ 		width: 50%;
  		padding-right: 5%;
  	}
  	.author-page .author_card_info {
- 		width: 70% !important;
+ 		width: 50% !important;
  	}
  	.author-page .nj_post_author_card > * {
  		display: inline-block;
@@ -184,7 +212,7 @@
  	}
  }
 
- @media (min-width: 460px) and (max-width: 980px)
+ @media (min-width: 480px) and (max-width: 980px)
  {
  	.et_pb_row {
  		margin: 0;
@@ -197,10 +225,10 @@
  	.entry-content .et_pb_section {
  		padding-top: 0px !important;
  	}
- 	p.post-meta {
+ 	.author-page p.post-meta {
  		font-size: 18px !important;
  	}
- 	span.dashicons.dashicons-clock {
+ 	.author-page span.dashicons.dashicons-clock {
  		font-size: 20px !important;
  	}
  	.post-body h3
@@ -257,7 +285,12 @@
  		padding: 5%;
  		margin: 0 !important;
  	}
-
+ 	#page-capa .et_pb_row_0 .et_pb_divider {
+ 		display: none;
+ 	}
+ 	#page-capa .et_pb_row_0 {
+ 		padding: 0 !important;
+ 	}
  	#opn_title {
  		margin-top: 30px;
  	}
@@ -379,7 +412,7 @@
 
  #top-menu li {
  	font-family: 'Source Sans Pro';
- 	font-weight: 100;
+ 	font-weight: 300;
  }
  #top-menu li a {
  	line-height: 34px;
@@ -510,6 +543,8 @@
  }
  #opn_title {
  	font-family: 'Times Condensed';
+ 	font-size: 1.2em;
+ 	padding: 0.2em 0 0;
  }
 
  #main-footer, #footer-bottom {
@@ -604,24 +639,25 @@
  .filter_wrap
  {
  	text-align: center;
+ 	margin-bottom: 2em;
  }
  .filter_wrap * {
  	vertical-align: middle;
  }
 
  .filter_wrap span:before {
-    font-size: 25px;
-    color: #444444;
-    border-bottom: 1px solid #444444;
-}
-.filter_wrap input {
-    font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 21px;
-    border: none;
-    border-bottom: 1px solid #444444;
-}
+ 	font-size: 25px;
+ 	color: #444444;
+ 	border-bottom: 1px solid #444444;
+ }
+ .filter_wrap input {
+ 	font-family: 'Source Sans Pro', Helvetica, Arial, Lucida, sans-serif;
+ 	font-weight: bold;
+ 	text-transform: uppercase;
+ 	font-size: 21px;
+ 	border: none;
+ 	border-bottom: 1px solid #444444;
+ }
  .author_tags
  {
  	display: none;
@@ -634,4 +670,18 @@
 
  #colunistas {
  	min-height: 80vh;
+ }
+
+ #et_top_search
+ {
+ 	display: none !important;
+ }
+
+ #mobile_menu {
+ 	padding: 0 !important;
+ 	border: 0;
+ 	min-height: 3em;
+ }
+ #mobile_menu .menu-item {
+ 	margin: 0;
  }
