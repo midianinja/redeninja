@@ -6,9 +6,18 @@ function theme_enqueue_styles() {
 	wp_enqueue_style('Fjalla_one_font','https://fonts.googleapis.com/css?family=Fjalla+One');
 }
 
+add_action( 'after_setup_theme', 'nj_theme_setup' );
+
+function nj_theme_setup()
+{
+	add_theme_support( 'post-thumbnails' ) ;
+	add_image_size( 'facebook', 1200, 630, true);
+}
+
 function modify_user_contact_methods( $user_contact ) {
 	$user_contact['avatar']   = __( 'Avatar Image Link'   );
 	$user_contact['facebook']   = __( 'Facebook Link'   );
+	$user_contact['facebook_thumb']   = __( 'Facebook Thumbnail Link (1200 x 630)'   );
 	$user_contact['twitter'] = __( 'Twitter Link' );
 	$user_contact['youtube']   = __( 'Youtube Link'   );
 	$user_contact['instagram'] = __( 'Instagram Link' );
@@ -295,5 +304,87 @@ function set_posts_per_page( $query ) {
 
 	return $query;
 }
+
+function catch_that_image() {
+	global $post, $posts;
+	$first_img = '';
+	ob_start();
+	ob_end_clean();
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', do_shortcode($post->post_content), $matches);
+	$first_img = isset( $matches[1][0] ) ? $matches[1][0] : null;
+
+	return $first_img;
+}
+
+function fb_opengraph()
+{
+	global $post, $wp;
+
+	$current_url = home_url(add_query_arg(array(),$wp->request));
+
+	if (is_single() || is_page())
+	{
+		if(has_post_thumbnail($post->ID)) {
+			$img_src = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'facebook')[0];
+		} else {
+			$img_src = catch_that_image();
+		}
+
+	}
+	else if (is_author())
+	{
+		$img_src = get_the_author_meta('facebook_thumb');
+		if (empty($img_src))
+		{
+			$img_src = get_the_author_meta('avatar');
+		}
+	}
+
+	if (is_single())
+	{
+		$desc = wp_strip_all_tags(get_the_excerpt());
+	}
+	else if (is_author())
+	{
+		$desc = get_the_author_meta('description');
+	}
+	else
+	{
+		$desc = wp_trim_words(wp_strip_all_tags(get_the_content()));
+	}
+
+	if (is_front_page())
+	{
+		$title = get_bloginfo('description');
+	}
+	else
+	{
+		$title = get_the_title();
+	}
+
+	if (is_single())
+	{
+		$type = 'article';
+	}
+	else
+	{
+		$type = 'website';
+	}
+	?>
+
+	<meta property="og:url" content="<?php echo $current_url; ?>"/>
+	<meta property="og:type" content="<?php echo $type; ?>"/>
+	<meta property="og:title" content="<?php echo $title; ?>"/>
+	<meta property="og:image" content="<?php echo $img_src; ?>"/>
+	<meta property="og:description" content="<?php echo $desc; ?>"/>
+	<meta property="og:site_name" content="Rede NINJA" />
+	<meta property="og:locale" content="pt_BR" />
+
+	<?php
+}
+
+add_action('wp_head', 'fb_opengraph', 5);
+
+
 
 ?>
