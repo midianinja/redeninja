@@ -124,7 +124,7 @@
  	{
  		margin-bottom: 0 !important;
  	}
- 	#page-capa #colunistas .nj_post_author_card {
+ 	#colunistas .nj_post_author_card {
  		width: 50% !important;
  		padding: 2.5%;
  	}
@@ -280,7 +280,7 @@
  		display: block;
  		float: none;
  	}
- 	#page-capa #colunistas .nj_post_author_card {
+ 	#colunistas .nj_post_author_card {
  		width: 50% !important;
  		padding: 5%;
  		margin: 0 !important;
@@ -625,14 +625,14 @@
 
 
 
- #page-capa #colunistas .et_pb_row {
+ #colunistas .et_pb_row {
  	display: flex;
  	flex-wrap: wrap;
  	justify-content: space-between;
  }
 
 
- #page-capa #colunistas .nj_post_author_card {
+ #colunistas .nj_post_author_card {
  	margin-right: 0 !important;
  }
 
@@ -685,3 +685,7 @@
  #mobile_menu .menu-item {
  	margin: 0;
  }
+
+#page-capa .nj_post_author_card {
+    margin-bottom: 3em;
+}

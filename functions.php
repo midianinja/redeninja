@@ -319,6 +319,7 @@ function catch_that_image() {
 function fb_opengraph()
 {
 	global $post, $wp;
+
 	if (isset($wp->query_vars["author_name"]))
 	{
 		$author = get_user_by('slug',$wp->query_vars["author_name"]);
@@ -349,7 +350,7 @@ function fb_opengraph()
 
 	if (is_single())
 	{
-		$desc = wp_strip_all_tags(get_the_excerpt());
+		$desc = wp_strip_all_tags($post->post_excerpt);
 	}
 	else if (is_author())
 	{
@@ -357,7 +358,7 @@ function fb_opengraph()
 	}
 	else
 	{
-		$desc = wp_trim_words(wp_strip_all_tags(get_the_content()));
+		$desc = wp_trim_words(wp_strip_all_tags($post->post_content));
 	}
 
 	if (is_front_page())
