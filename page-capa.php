@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Blank Page
+Template Name: Capa
 */
 
 get_header();

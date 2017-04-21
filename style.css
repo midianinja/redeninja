@@ -400,6 +400,12 @@
  	.author-page .author_card_info .author-name, .author-page .author_card_info .et_pb_divider {
  		display: none;
  	}
+ 	#main-header .container {
+ 		width: 80% !important;
+ 		max-width: 1080px !important;
+ 		padding-left: 0 !important;
+ 		padding-right: 0 !important;
+ 	}
 
  }
  .et_post_meta_wrapper h1.entry-title {
@@ -686,6 +692,23 @@
  	margin: 0;
  }
 
-#page-capa .nj_post_author_card {
-    margin-bottom: 3em;
-}
+ #page-capa .nj_post_author_card {
+ 	margin-bottom: 3em;
+ }
+
+ #destaque2 {
+ 	border-right: 3px solid transparent;
+ 	border-left: 3px solid transparent;
+ }
+
+ #destaque1 {
+ 	border-right: 3px solid transparent;
+ }
+ #destaque3 {
+ 	border-left: 3px solid transparent;
+ }
+
+ #mobile_menu .menu-item {
+ 	background-color: #333;
+ 	height: 3.5em;
+ }
