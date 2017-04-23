@@ -12,7 +12,53 @@ function nj_theme_setup()
 {
 	add_theme_support( 'post-thumbnails' ) ;
 	add_image_size( 'facebook', 1200, 630, true);
+
 }
+
+function cptui_register_my_cpts_news() {
+
+	/**
+	 * Post Type: News.
+	 */
+
+	$labels = array(
+		"name" => __( 'News', 'divi-child-theme' ),
+		"singular_name" => __( 'News', 'divi-child-theme' ),
+	);
+
+	$args = array(
+		"label" => __( 'News', 'divi-child-theme' ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "news", "with_front" => true ),
+		"query_var" => true,
+		"menu_position" => 5,
+		"taxonomies" => array( "category", "post_tag" ),
+	);
+
+	register_post_type( "news", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_news' );
+
+
+function my_et_builder_post_types( $post_types ) {
+    $post_types[] = 'news';
+
+    return $post_types;
+}
+add_filter( 'et_builder_post_types', 'my_et_builder_post_types' );
 
 function modify_user_contact_methods( $user_contact ) {
 	$user_contact['avatar']   = __( 'Avatar Image Link'   );

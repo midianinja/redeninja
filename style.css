@@ -712,3 +712,7 @@
  	background-color: #333;
  	height: 3.5em;
  }
+
+ .single-news #page-container .et_pb_row {
+ 	width: 100% !important;
+ }
