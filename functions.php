@@ -395,7 +395,7 @@ function fb_opengraph()
 		}
 	}
 
-	if (is_single())
+	if (is_single() || is_page())
 	{
 		$desc = wp_strip_all_tags($post->post_excerpt);
 	}
