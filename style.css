@@ -500,7 +500,7 @@
  }
  .single-news .post-body > *:not(div):not(h3)
  {
-	max-width: 700px;
+ 	max-width: 700px;
  }
  .author-name
  {
@@ -739,5 +739,8 @@
  	width: 100% !important;
  }
  .single-news .et_post_meta_wrapper h1 {
+ 	width: 100%;
+ }
+ .single-news .post-body {
  	width: 100%;
  }
