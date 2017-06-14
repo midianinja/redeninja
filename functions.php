@@ -377,6 +377,8 @@ function fb_opengraph()
 	}
 	$current_url = home_url(add_query_arg(array(),$wp->request));
 
+	$img_src = '';
+	
 	if (is_single() || is_page())
 	{
 		if(has_post_thumbnail($post->ID)) {
@@ -395,6 +397,7 @@ function fb_opengraph()
 		}
 	}
 
+	$desc = wp_trim_words(wp_strip_all_tags($post->post_content));
 	if (is_single() || is_page())
 	{
 		$desc = wp_strip_all_tags($post->post_excerpt);
@@ -403,11 +406,8 @@ function fb_opengraph()
 	{
 		$desc = get_the_author_meta('description',$author_ID);
 	}
-	else
-	{
-		$desc = wp_trim_words(wp_strip_all_tags($post->post_content));
-	}
 
+	$title = get_the_title();
 	if (is_front_page())
 	{
 		$title = get_bloginfo('description');
@@ -416,19 +416,14 @@ function fb_opengraph()
 	{
 		$title = get_the_author_meta('display_name',$author_ID);
 	}
-	else
-	{
-		$title = get_the_title();
-	}
+	
 
+	$type = 'website';
 	if (is_single())
 	{
 		$type = 'article';
 	}
-	else
-	{
-		$type = 'website';
-	}
+	
 	?>
 
 	<meta property="og:url" content="<?php echo esc_attr($current_url); ?>"/>
