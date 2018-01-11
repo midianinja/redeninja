@@ -43,7 +43,7 @@ function cptui_register_my_cpts_news() {
 		"hierarchical" => false,
 		"rewrite" => array( "slug" => "news", "with_front" => true ),
 		"query_var" => true,
-		'supports' => array('title', 'editor', 'thumbnail', 'author'),
+		'supports' => array('title', 'editor', 'thumbnail', 'author', 'excerpt'),
 		"menu_position" => 5,
 		"taxonomies" => array( "category", "post_tag" ),
 	);
