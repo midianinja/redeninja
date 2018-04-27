@@ -748,3 +748,8 @@
 .single-news .et_post_meta_wrapper {
     max-width: 800px !important;
 }
+
+
+#et_top_search {
+	margin: 11px 0 0 19px !important;
+}
