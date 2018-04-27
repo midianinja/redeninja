@@ -71,8 +71,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 <?php
 								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 								$args = array(
-								    'posts_per_page' => '10',
-								    'paged' => $paged
+									'author'=> get_the_author_meta( 'ID' ),
+									                  'posts_per_page' => 10,
+									                  'paged'          => $paged,
+									                  'order'    => 'DESC',
+									                    'post_type' => 'post',
+
 								);
 								$wp_query = new WP_Query( $args ); ?>
 
