@@ -1,0 +1,152 @@
+language: php
+sudo: required
+notifications:
+  email: false
+
+php:
+  - 5.6
+  - 7
+  - nightly
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: nightly
+    - env: WP_VERSION=nightly
+
+services:
+  - mysql
+
+cache:
+  apt: true
+  directories:
+    - vendor
+    - $HOME/.composer/cache/files
+
+addons:
+  apt:
+    packages:
+      # required by WordPress
+      - libjpeg-dev
+      - libpng12-dev
+      - php5-fpm
+      - php5-mysql
+      - nginx
+  hosts:
+    - wp.localhost
+    - test1.wp.localhost
+    - test2.wp.localhost
+
+env:
+  global:
+    - WP_FOLDER="/tmp/wordpress"
+    - WP_URL="http://wp.localhost"
+    - WP_DOMAIN="wp.localhost"
+    - DB_NAME="test"
+    - TEST_DB_NAME="wploader"
+    - WP_TABLE_PREFIX="wp_"
+    - WP_ADMIN_USERNAME="admin"
+    - WP_ADMIN_PASSWORD="admin"
+    - WP_SUBDOMAIN_1="test1"
+    - WP_SUBDOMAIN_1_TITLE="Test Subdomain 1"
+    - WP_SUBDOMAIN_2="test2"
+    - WP_SUBDOMAIN_2_TITLE="Test Subdomain 2"
+  matrix:
+    - WP_VERSION=latest
+    - WP_VERSION=nightly
+
+before_install:
+  # create the databases that will be used in the tests
+  - mysql -e "create database IF NOT EXISTS $DB_NAME;" -uroot
+  - mysql -e "create database IF NOT EXISTS $TEST_DB_NAME;" -uroot
+  # set up folders
+  - mkdir -p $WP_FOLDER
+  - mkdir tools
+  # install wp-cli in the `tools` folder
+  - wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -P $(pwd)/tools/
+  - chmod +x tools/wp-cli.phar && mv tools/wp-cli.phar tools/wp
+  # append the `tools` folder to the PATH
+  - export PATH=$PATH:$(pwd)/tools
+  # prepend the `vendor/bin` folder the PATH
+  - export PATH=vendor/bin:$PATH
+
+install:
+  - composer install --prefer-dist
+
+  # install WordPress in the `wordpress` folder
+  - cd $WP_FOLDER
+  - wp core download --version=$WP_VERSION
+  - wp config create --dbname="$DB_NAME" --dbuser="root" --dbpass="" --dbhost="127.0.0.1" --dbprefix="$WP_TABLE_PREFIX"
+  - wp core multisite-install --url="$WP_URL" --base="/" --subdomains --title="Test" --admin_user="$WP_ADMIN_USERNAME" --admin_password="$WP_ADMIN_PASSWORD" --admin_email="admin@$WP_DOMAIN" --skip-email
+
+  # flush rewrite rules to use pretty permalinks
+  - wp rewrite structure '/%postname%/' --hard
+
+  # create the two subdomain sites I need
+  - wp site create --slug="$WP_SUBDOMAIN_1" --title="$WP_SUBDOMAIN_1_TITLE"
+  - wp site create --slug="$WP_SUBDOMAIN_2" --title="$WP_SUBDOMAIN_2_TITLE"
+
+  # update WordPress database to avoid prompts
+  - wp core update-db --network
+
+  # export a dump of the just installed database to the _data folder
+  # - wp db export $TRAVIS_BUILD_DIR/tests/_data/dump.sql
+
+  # get back to the build folder
+  - cd $TRAVIS_BUILD_DIR
+
+  # copy the Nginx configuration file to the default site and replace the path and domain
+  - sudo cp travis-nginx.conf /etc/nginx/sites-available/$WP_DOMAIN
+  - sudo sed -e "s?%WP_FOLDER%?$WP_FOLDER?g" --in-place /etc/nginx/sites-available/$WP_DOMAIN
+  - sudo sed -e "s?%WP_DOMAIN%?$WP_DOMAIN?g" --in-place /etc/nginx/sites-available/$WP_DOMAIN
+
+  # enable the WordPress installation
+  - sudo ln -s /etc/nginx/sites-available/$WP_DOMAIN /etc/nginx/sites-enabled/
+
+before_script:
+  - sudo service php5-fpm restart
+  - sudo service nginx restart
+
+  # symbolically link the plugin root folder to the WordPress installation folder
+  # if you are using wp-browser use the Symlinker extension and skip this
+  - ln -s $TRAVIS_BUILD_DIR $WP_FOLDER/wp-content/plugins
+
+# Install CodeSniffer for WordPress Coding Standards checks.
+# - mkdir php-codesniffer && curl -L https://github.com/squizlabs/PHP_CodeSniffer/archive/master.tar.gz | tar xz --strip-components=1 -C php-codesniffer
+# Install WordPress Coding Standards.
+# - mkdir wordpress-coding-standards && curl -L https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/archive/master.tar.gz | tar xz --strip-components=1 -C wordpress-coding-standards
+# Set install path for WordPress Coding Standards
+# @link https://github.com/squizlabs/PHP_CodeSniffer/blob/4237c2fc98cc838730b76ee9cee316f99286a2a7/CodeSniffer.php#L1941
+# - scripts/phpcs --config-set installed_paths ../wordpress-coding-standards
+# Install JSCS: JavaScript Code Style checker
+# @link http://jscs.info/
+# - npm install -g jscs
+# Install JSHint, a JavaScript Code Quality Tool
+# @link http://jshint.com/docs/
+# - npm install -g jshint
+# - wget https://develop.svn.wordpress.org/trunk/.jshintrc
+
+# Run test script commands.
+# Default is specific to project language.
+# All commands must exit with code 0 on success. Anything else is considered failure.
+script:
+    # Search theme for PHP syntax errors.
+    - find . \( -name '*.php' \) -exec php -lf {} \;
+    - curl http://wp.localhost
+    - curl http://test1.wp.localhost
+    - curl http://test2.wp.localhost
+    # Run the theme through JSHint
+    # - jshint .
+    # Run the theme through JavaScript Code Style checker
+    # - jscs .
+    # WordPress Coding Standards
+    # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
+    # @link http://pear.php.net/package/PHP_CodeSniffer/
+    # -p flag: Show progress of the run.
+    # -s flag: Show sniff codes in all reports.
+    # -v flag: Print verbose output.
+    # -n flag: Do not print warnings (shortcut for --warning-severity=0)
+    # --standard: Use WordPress as the standard.
+    # --extensions: Only sniff PHP files.
+# - $WP_DEVELOP_DIR/php-codesniffer/scripts/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php
+
