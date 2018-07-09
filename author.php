@@ -103,17 +103,16 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 								<?php endif; ?>
 					</div> <!-- .et_pb_posts -->
 <div>
-	<div id="togglerow1" class="row1 et_pb_row et_pb_row_0 et_pb_equal_columns">
-		<div class="et_pb_column et_pb_column_1_2  et_pb_column_0">
-			<div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left text1 et_pb_text_0">
+	<div id="paginacaohack" class="">
+
+			<div class="">
 				<?php next_posts_link( '&laquo; Posts Anteriores' ); ?>
 			</div>
-		</div>
-		<div class="et_pb_column et_pb_column_1_2 ">
-			<div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left text1 et_pb_text_0">
+
+			<div class="recentes">
 				<?php previous_posts_link( 'Posts Recentes &raquo;' ); ?>
 			</div>
-		</div>
+
 	</div>
 
 				</div>
