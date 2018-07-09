@@ -753,3 +753,19 @@
 #et_top_search {
 	margin: 11px 0 0 19px !important;
 }
+
+
+
+/* Paginacao hack */
+
+#paginacaohack a {
+	color:blue;
+	text-decoration: underline;
+	font-size:1.2em;
+} 
+
+#paginacaohack .recentes {
+	float:right;
+}
+
+
