@@ -105,12 +105,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 <div>
 	<div id="paginacaohack" class="">
 
-			<div class="">
-				<?php next_posts_link( '&laquo; Posts Anteriores' ); ?>
-			</div>
-
 			<div class="recentes">
 				<?php previous_posts_link( 'Posts Recentes &raquo;' ); ?>
+			</div>
+		
+			<div class="">
+				<?php next_posts_link( '&laquo; Posts Anteriores' ); ?>
 			</div>
 
 	</div>
