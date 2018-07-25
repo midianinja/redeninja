@@ -352,6 +352,33 @@ function set_posts_per_page( $query ) {
 	return $query;
 }
 
+/**
+ * 
+ * @param \WP_Query $query
+ */
+function nj_set_author_query( $query ) {
+    if (isset($query->query_vars["author_name"])) {
+        $args = array(
+            'search'         => $query->query_vars["author_name"],
+            'search_columns' => array( 'user_login', 'user_nicename' )
+        );
+        $user_query = new WP_User_Query( $args );
+        $authors = $user_query->get_results();
+        $author_ID = false;
+        if (!empty($authors)) {
+            $author_ID = $authors[0]->ID;
+        }
+        
+        if($author_ID) {
+            $user_post_count = count_user_posts( $author_ID , array('post', 'news'), true );
+            if($user_post_count == 0) {
+                $query->set('post__in', array(0));
+            }
+        }
+    }
+}
+add_action( 'pre_get_posts',  'nj_set_author_query', 99999 );
+
 function catch_that_image() {
 	global $post, $posts;
 	$first_img = '';
