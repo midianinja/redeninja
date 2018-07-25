@@ -67,45 +67,62 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 						</div>
 						<div class="et_pb_blog_grid_wrapper">
 							<div class="et_pb_blog_grid clearfix et_pb_module et_pb_bg_layout_light  et_pb_blog_0" data-columns="2">
-								<?php if(have_posts()) : ?>
-    								<?php while ( have_posts() ) : the_post(); ?>
-        								<?php $rpost = get_post(get_the_ID()); ?><div id="nj_author_post_card" class="column size-1of2">
-        									<article id="<?php the_ID(); ?>" class="et_pb_post clearfix post type-post status-publish format-standard has-post-thumbnail hentry">
-        
-        										<div class="et_pb_image_container"><a href="<?php echo get_post_permalink($rpost->ID); ?>" class="entry-featured-image-url">
-        											<?php echo get_the_post_thumbnail($rpost->ID); ?></a>
-        										</div> <!-- .et_pb_image_container -->
-        										<h2 class="entry-title"><a href="<?php echo get_post_permalink($rpost->ID); ?>"><?php echo $rpost->post_title; ?></a></h2>
-        										<div class="card_ds">
-        											<p class="post-meta"><span class="published"><?php the_date('d/m/Y'); ?><span class="dashicons dashicons-clock"></span><?php the_time(); ?></span></p><div class="post-content">
-        												<?php echo do_shortcode("[addtoany]"); ?>
-        											</div>
-        											<div class="card_ex">
-        												<p><?php echo get_the_excerpt($rpost->ID); ?></p>
-        											</div>
-        										</div>
-        									</article>
-        								</div>
-        							<?php endwhile; ?>
-        						<?php else: ?>
-        							<article class="et_pb_post clearfix post type-post status-publish format-standard has-post-thumbnail hentry">
-        								<p>Não tem postagens ainda!</p>
-        							</article>
-        						<?php endif; ?>
+
+<?php
+								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+								$args = array(
+									'author'=> get_the_author_meta( 'ID' ),
+									                  'posts_per_page' => 10,
+									                  'paged'          => $paged,
+									                  'order'    => 'DESC',
+									                    'post_type' => 'post',
+
+								);
+								$wp_query = new WP_Query( $args ); ?>
+
+								<?php if ( $wp_query->have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+									<?php $rpost = get_post(get_the_ID()); ?><div id="nj_author_post_card" class="column size-1of2">
+									  <article id="<?php the_ID(); ?>" class="et_pb_post clearfix post type-post status-publish format-standard has-post-thumbnail hentry">
+
+									    <div class="et_pb_image_container"><a href="<?php echo get_post_permalink($rpost->ID); ?>" class="entry-featured-image-url">
+									      <?php echo get_the_post_thumbnail($rpost->ID); ?></a>
+									    </div> <!-- .et_pb_image_container -->
+									    <h2 class="entry-title"><a href="<?php echo get_post_permalink($rpost->ID); ?>"><?php echo $rpost->post_title; ?></a></h2>
+									    <div class="card_ds">
+									      <p class="post-meta"><span class="published"><?php the_date('d/m/Y'); ?><span class="dashicons dashicons-clock"></span><?php the_time(); ?></span></p><div class="post-content">
+									      <?php echo do_shortcode("[addtoany]"); ?>
+									    </div>
+									    <div class="card_ex">
+									      <p><?php echo get_the_excerpt($rpost->ID); ?></p>
+									    </div>
+									  </div>
+									</article>
+									</div>
+								<?php endwhile; else: ?>
+								sorry no posts
+								<?php endif; ?>
 					</div> <!-- .et_pb_posts -->
+<div>
+	<div id="paginacaohack" class="">
+
+			<div class="recentes">
+				<?php previous_posts_link( 'Posts Recentes &raquo;' ); ?>
+			</div>
+		
+			<div class="">
+				<?php next_posts_link( '&laquo; Posts Anteriores' ); ?>
+			</div>
+
+	</div>
+
 				</div>
 			</div>
 			<!-- TERMINA O LOOP -->
-
-
 		</div>
 	</div>
 </div>
 
 </article> <!-- .et_pb_post -->
-
-
-
 
 </div>
 
