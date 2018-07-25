@@ -340,24 +340,18 @@ function nj_destaque_slider($speed)
 
 }
 
-add_action( 'pre_get_posts',  'set_posts_per_page', 99999 );
-function set_posts_per_page( $query ) {
-
-	global $wp_the_query;
-
-	if ( ( ! is_admin() ) && ( $query->is_author() ) ) {
-		$query->set( 'posts_per_page', 10 );
-	}
-
-	return $query;
-}
-
 /**
- * 
+ * check if author have posts, see https://github.com/ForaDoEixo/redeninja/issues/57
  * @param \WP_Query $query
  */
 function nj_set_author_query( $query ) {
-    if (isset($query->query_vars["author_name"])) {
+    if ( ! is_admin()  &&  $query->is_author() ) {
+        $paged = $query->get('paged', 1);
+        $query->set('posts_per_page', 10);
+        $query->set('paged', $paged);
+        $query->set('order', 'DESC');
+        $query->set('post_type', 'post');
+        
         $args = array(
             'search'         => $query->query_vars["author_name"],
             'search_columns' => array( 'user_login', 'user_nicename' )
@@ -370,7 +364,7 @@ function nj_set_author_query( $query ) {
         }
         
         if($author_ID) {
-            $user_post_count = count_user_posts( $author_ID , array('post', 'news'), true );
+            $user_post_count = count_user_posts( $author_ID , 'post', true );
             if($user_post_count == 0) {
                 $query->set('post__in', array(0));
             }
