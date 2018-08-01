@@ -4,7 +4,7 @@ A Rede NINJA um site de uma ampla frente de colunistas da Mídia NINJA dispostos
 Desenvolvido em wordpress, com o tema do DIVI 3, na plataforma da Rede Livre (redelivre.org), visa reunir uma ampla inteligência coletiva a serviço de refletir e incidir sobre os mais variados temas da nossa sociedade, sem limite e sem fronteira.
 
 ![GitHub](https://img.shields.io/github/license/ForaDoEixo/redeninja.svg)
-[![chatroom icon](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/joinchat/)
+[![chatroom icon](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/joinchat/AHZmBlNZqgk8fDMrD4_CSQ)
 
 # Screenshot
 ![Screenshot](./screenshots/0.png)
