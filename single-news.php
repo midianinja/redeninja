@@ -111,6 +111,11 @@ nav.post-nav
 									<div class="et_pb_module et_pb_space et_pb_divider et_pb_divider_0"></div>
 									<div class="top_ss"><?php echo do_shortcode("[addtoany]"); ?></div>
 									<?php the_content(); ?>
+									<?php if ( is_active_sidebar( 'sidebar-news' ) ) : ?>
+                                    	<div id="sidebar-news-area" class="sidebar-news-area widget-area" role="complementary">
+                                    		<?php dynamic_sidebar( 'sidebar-news' ); ?>
+                                    	</div><!-- #sidebar-news -->
+                                    <?php endif; ?>
 									<div class="bottom_ss"><?php echo do_shortcode("[addtoany]"); ?></div>
 									<nav class="post-nav"><span class="alignleft nav-link-previous"><?php previous_post_link("< %link"); ?></span><span class="alignright nav-link-next"><?php next_post_link("%link >"); ?></span></nav>
 									<div class="facebook_comments">

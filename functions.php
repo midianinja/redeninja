@@ -462,5 +462,18 @@ function fb_opengraph()
 add_action('wp_head', 'fb_opengraph', 5);
 
 
+function redeninja_widgets_init() {
+    register_sidebar( array(
+        'name' => __( 'News Sidebar', 'redeninja' ),
+        'id' => 'sidebar-news',
+        'description' => __( 'Widgets in this area will be shown on news before share buttons.', 'redeninja' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<div class="widgettitle">',
+        'after_title'   => '</div>',
+    ) );
+}
+
+add_action( 'widgets_init', 'redeninja_widgets_init' );
 
 ?>
