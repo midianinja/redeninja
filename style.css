@@ -793,13 +793,15 @@
 	vertical-align: initial;
 }
 
-.et_pb_divider:before
-{
+.et_pb_divider:before {
 	border-top-color: black !important;
 }
 
-@media only screen and (min-width: 1350px)
-{
+#sidebar-news-area {
+    margin-top: 2em;
+}
+
+@media only screen and (min-width: 1350px) {
 	.et_pb_section {
 		padding: 0 0;
 	}
