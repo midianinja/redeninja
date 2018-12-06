@@ -386,6 +386,8 @@ function catch_that_image() {
 
 function fb_opengraph()
 {
+    wp_reset_postdata(); //set post loop query
+    
 	global $post, $wp;
 
 	if (isset($wp->query_vars["author_name"]))
@@ -437,7 +439,6 @@ function fb_opengraph()
 	{
 		$title = get_the_author_meta('display_name',$author_ID);
 	}
-	
 
 	$type = 'website';
 	if (is_single())
@@ -447,7 +448,7 @@ function fb_opengraph()
 	
 	?>
 
-	<meta property="og:url" content="<?php echo esc_attr($current_url); ?>"/>
+	<meta property="og:url" content="<?php echo esc_attr($current_url); ?>/"/>
 	<meta property="og:type" content="<?php echo esc_attr($type); ?>"/>
 	<meta property="og:title" content="<?php echo esc_attr($title); ?>"/>
 	<meta property="og:image" content="<?php echo esc_attr($img_src); ?>"/>
@@ -458,8 +459,7 @@ function fb_opengraph()
 
 	<?php
 }
-
-add_action('wp_head', 'fb_opengraph', 5);
+add_action('wp_head', 'fb_opengraph', 1);
 
 
 function redeninja_widgets_init() {
