@@ -345,8 +345,8 @@ function nj_destaque_slider($speed)
  * @param \WP_Query $query
  */
 function nj_set_author_query( $query ) {
-    if ( ! is_admin()  &&  $query->is_author() ) {
-        $paged = $query->get('paged', 1);
+    if ( ! is_admin()  && ( $query->is_author() || ($query->query['author_name'] && $query->query['page'] > 1 ) ) ) {
+        $paged = $query->get('page', 1);
         $query->set('posts_per_page', 10);
         $query->set('paged', $paged);
         $query->set('order', 'DESC');
